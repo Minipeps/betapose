@@ -1,0 +1,1 @@
+python scripts/gt_single_object.py

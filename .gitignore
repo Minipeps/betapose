@@ -1,0 +1,23 @@
+# Visual Studio Code cache
+.vscode/
+
+# Python cache files
+*.pyc
+
+# Darknet Compilation
+/3_6Dpose_estimator/train_YOLO/obj/
+
+# LineMod dataset
+/LineMod
+
+# Generated data
+**/data/
+**/data_linemod_gt/
+/2_keypoint_annotator/*.ply
+
+# Generated models
+**/backup_linemod_gt/
+**/backup/
+**/examples/
+**/exp/
+**/models/
