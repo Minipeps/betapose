@@ -1,6 +1,7 @@
 torchvision
 -e git+https://github.com/ncullen93/torchsample.git#egg=torchsample
 visdom
+vispy
 nibabel
 pandas
 tqdm

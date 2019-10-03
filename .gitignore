@@ -1,0 +1,42 @@
+# Visual Studio Code cache
+.vscode/
+
+# Python cache
+__pycache__
+
+# Installation files
+pip-delete-this-directory.txt
+
+# CMakeFiles (Step I)
+1_keypoint_designator/build/**
+
+# LineMod dataset
+LineMod/
+
+# Generated PLY shapes by annotation process
+2_keypoint_annotator/*.ply
+
+# Generated annotation data
+3_6Dpose_estimator/data/
+3_6Dpose_estimator/data_linemod_gt/
+kp_dataset_log.txt
+
+# Generated training models and evaluation files
+3_6Dpose_estimator/examples/
+3_6Dpose_estimator/models/
+
+# Darknet files
+darknet.exe
+darknet53.conv.74
+**/train_YOLO/*.dll
+**/train_YOLO/*.lib
+**/train_YOLO/bad.list
+**/train_YOLO/*.png
+**/train_YOLO/obj/
+
+# Darknet backup weigths
+backup_linemod_gt/
+
+# KPD training output files
+**/tensorboard/coco/
+3_6Dpose_estimator/exp/

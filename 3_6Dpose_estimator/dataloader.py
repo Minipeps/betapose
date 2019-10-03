@@ -29,10 +29,10 @@ if sys.version_info >= (3, 0):
 else:
     from Queue import Queue, LifoQueue
 
-# if opt.vis_fast:
-#     from fn import vis_frame_fast as vis_frame
-# else:
-#     from fn import vis_frame
+if opt.vis_fast:
+    from fn import vis_frame_fast as vis_frame
+else:
+    from fn import vis_frame
 from IPython import embed # for debugging
 
 # This class is deprecated, use the next one instead.
@@ -287,6 +287,7 @@ class DetectionLoader:
         # initialize the file video stream along with the boolean
         # used to indicate if the thread should be stopped or not
         cfg_path = "yolo/cfg/yolov3-single.cfg"
+        #cfg_path = "train_YOLO/cfg/yolo-linemod-single.cfg"
         weights_path = 'models/yolo/{:02d}.weights'.format(obj_id)
         self.det_model = Darknet(cfg_path, reso=int(opt.inp_dim))
         self.det_model.load_weights(weights_path)
@@ -377,12 +378,12 @@ class DetectionLoader:
                 # boxes = dets[:, 1:5]
                 # scores = dets[:, 5:6]
 
-            img = Image.open(im_name[0])
-            draw = ImageDraw.Draw(img)
-            for i in range(boxes.shape[0]):
-                x1, y1, x2, y2 = boxes[i,0], boxes[i,1], boxes[i,2], boxes[i,3]
-                objectness = 'conf: %.2f' % scores
-                draw.rectangle((x1, y1, x2, y2), outline='red')
+            # img = Image.open(im_name[0])
+            # draw = ImageDraw.Draw(img)
+            # for i in range(boxes.shape[0]):
+            #     x1, y1, x2, y2 = boxes[i,0], boxes[i,1], boxes[i,2], boxes[i,3]
+            #     objectness = 'conf: %.2f' % scores
+            #     draw.rectangle((x1, y1, x2, y2), outline='red')
 
             # img.save(im_name[0].replace('rgb', 'results'))
 
@@ -728,15 +729,15 @@ class DataWriter:
                     else:
                         result.update({'cam_R':[], 'cam_t':[]})
                     self.final_result.append(result)
-                    # if opt.save_img or opt.save_video or opt.vis:
-                    #     img = vis_frame(orig_img, result)
-                    #     if opt.vis:
-                    #         cv2.imshow("AlphaPose Demo", img)
-                    #         cv2.waitKey(30)
-                    #     if opt.save_img:
-                    #         cv2.imwrite(os.path.join(opt.outputpath, 'vis', im_name), img)
-                    #     if opt.save_video:
-                    #         self.stream.write(img)
+                    if opt.save_img or opt.save_video or opt.vis:
+                        img = vis_frame(orig_img, result)
+                        if opt.vis:
+                            cv2.imshow("AlphaPose Demo", img)
+                            cv2.waitKey(30)
+                        if opt.save_img:
+                            cv2.imwrite(os.path.join(opt.outputpath, 'vis', im_name), img)
+                        if opt.save_video:
+                            self.stream.write(img)
             else:
                 time.sleep(0.1)
 

@@ -6,7 +6,7 @@ from plyfile import PlyData
 import cv2
 from vispy import gloo
 from IPython import embed #debugging
-from utils import output_pointcloud
+from utils.utils import output_pointcloud
 
 class Model3D:
     def __init__(self, file_to_load=None):

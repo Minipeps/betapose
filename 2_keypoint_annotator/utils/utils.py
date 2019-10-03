@@ -5,7 +5,7 @@ from tqdm import tqdm
 from scipy.linalg import expm, norm
 from matplotlib import pyplot as plt
 from IPython import embed #debugging
-import renderer
+import utils.renderer
 import random
 import copy
 
@@ -119,14 +119,14 @@ def jitter_bbox(bbox, jitter):
         bbox: [xmin, ymin, xmax, ymax]
     '''
     newbbox = copy.copy(bbox)
-    oh = bbox[3] - bbox[1];
-    ow = bbox[2] - bbox[0];
-    dw = (ow*jitter);
-    dh = (oh*jitter);
-    pleft  = int(random.uniform(-dw, dw));
-    pright = int(random.uniform(-dw, dw));
-    ptop   = int(random.uniform(-dh, dh));
-    pbot   = int(random.uniform(-dh, dh));
+    oh = bbox[3] - bbox[1]
+    ow = bbox[2] - bbox[0]
+    dw = (ow*jitter)
+    dh = (oh*jitter)
+    pleft  = int(random.uniform(-dw, dw))
+    pright = int(random.uniform(-dw, dw))
+    ptop   = int(random.uniform(-dh, dh))
+    pbot   = int(random.uniform(-dh, dh))
     newbbox[0] = bbox[0] + pleft
     newbbox[1] = bbox[1] + ptop
     newbbox[2] = bbox[2] + pright
@@ -276,7 +276,7 @@ def draw_detections_3D(image, detections, cam, model_map, thres):
     if not detections:
         return np.copy(image)
 
-    ren = Renderer((image.shape[1], image.shape[0]), cam)
+    ren = renderer.Renderer((image.shape[1], image.shape[0]), cam)
     ren.clear()
     ren.set_cam(cam)
     out = np.copy(image)
@@ -381,8 +381,6 @@ def create_src_pointcloud(mask, color, depth, cam, model_map, img_size=(720, 540
         points: D*vi*N*3 pointcloud, where D means number of dets, N depends on the 
         size of bbox,  3 means XYZ coordinates 
     '''
-    width = img_size[0]
-    height = img_size[1]
     points = []
         # print("Number of dets in one img is %d." %len(image_dets))
     for det in mask:
@@ -583,7 +581,7 @@ def verify_6D_poses(detections, model_map, cam, image):
     scene_grads = np.reshape(scene_grads, (-1, 2))
     #cv2.imshow('mags', scene_mags)
 
-    ren = Renderer((image.shape[1], image.shape[0]), cam)
+    ren = renderer.Renderer((image.shape[1], image.shape[0]), cam)
     ren.set_cam(cam)
     filtered = []
     for det in detections:

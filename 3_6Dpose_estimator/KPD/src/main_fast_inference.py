@@ -26,7 +26,7 @@ except AttributeError:
 class InferenNet_fast(nn.Module):
     def __init__(self, kernel_size, obj_id, dataset):
         super(InferenNet_fast, self).__init__()
-        allpaths = ['NULL', 'seq1_model', 'seq2_model', 'NULL', 'seq4_model',\
+        allpaths = ['NULL', 'seq1_dpg_model', 'seq2_dpg_model', 'NULL', 'seq4_model',\
         'seq5_model', 'seq6_model', 'NULL', 'seq8_model', 'seq9_model', \
         'Semmetry_obj10', 'seq11_model', 'seq12_model', 'seq13_model',\
         'seq14_model', 'seq15_model']

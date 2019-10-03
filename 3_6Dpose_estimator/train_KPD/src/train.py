@@ -11,7 +11,7 @@ from tqdm import tqdm
 from models.FastPose import createModel
 from utils.eval import DataLogger, accuracy
 from utils.img import flip_v, shuffleLR_v
-from evaluation import prediction
+# from evaluation import prediction
 
 from tensorboardX import SummaryWriter
 import os

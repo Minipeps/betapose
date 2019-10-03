@@ -14,11 +14,11 @@ from IPython import embed
 
 class Mscoco(data.Dataset):
     def __init__(self, train=True, sigma=1,
-                 scale_factor=(0.2, 0.3), rot_factor=40, label_type='Gaussian'):
+                 scale_factor=(0.2, 0.3), rot_factor=40, label_type='Gaussian', object_id='04'):
         if train:
-            self.img_folder = './data/05/train' # test cluster
+            self.img_folder = '../data/{}/train'.format(object_id) # test cluster
         else: # validation dataset
-            self.img_folder = './data/05/eval' # test cluster
+            self.img_folder = '../data/{}/eval'.format(object_id) # test cluster
         self.is_train = train           # training set or test set
         self.inputResH = opt.inputResH
         self.inputResW = opt.inputResW
@@ -36,14 +36,14 @@ class Mscoco(data.Dataset):
         self.flipRef = ()
 
         if train:
-            filepath = os.path.join('./data/05/', "annot_train.h5") # test cluster
+            filepath = os.path.join('../data/{}/'.format(object_id), "annot_train.h5") # test cluster
             with h5py.File(filepath, 'r') as annot:
                 # train
                 self.imgname_coco_train = annot['imgname'][:]
                 self.bndbox_coco_train = annot['bndbox'][:]
                 self.part_coco_train = annot['part'][:]
         else:
-            filepath = os.path.join('./data/05/', "annot_eval.h5")
+            filepath = os.path.join('../data/{}/'.format(object_id), "annot_eval.h5")
             with h5py.File(filepath, 'r') as annot:
                 # val
                 self.imgname_coco_val = annot['imgname'][:]

@@ -1,0 +1,1 @@
+python betapose_evaluate.py --obj_id 4 --nClasses 50 --indir ../LineMod/test/04/rgb --outdir examples/seq2_dpg --sp --profile --nThreads 12

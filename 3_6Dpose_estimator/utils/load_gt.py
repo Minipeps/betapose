@@ -25,7 +25,7 @@ class Benchmark:
 
 def load_yaml(path):
     with open(path, 'r') as f:
-        content = yaml.load(f)
+        content = yaml.full_load(f)
         return content
 
 def load_bench(base_path):
@@ -171,20 +171,20 @@ def load_per_file(cam_K, models):
 
 if __name__ == '__main__':
 	print ("Testing load_gt ...")
-	sixd_base = "/media/data_2/SIXD/hinterstoisser/"
+	sixd_base = "../../LineMod/"
 	nr_frames = 0
-	sequence = 4
+	sequence = 1
 	print("Loading models...")
 	bench = load_bench(sixd_base)
 	cam_K = bench.cam
 	models = bench.models
 
-	# # test ground truth pose using obj1, 0000.png
-	# testobj = sinobj(1,0,[],[0.09630630, 0.99404401, 0.05100790, 0.57332098, -0.01350810, -0.81922001, -0.81365103, 0.10814000, -0.57120699])
-	# testobj.pose[:3,3] = [-105.35775150, -117.52119142, 1014.87701320]
-	# testobj.apply_pose(models['{:02d}'.format(int(1))].vertices)
-	# testobj.project(cam_K)
-	# embed()
-
-	load_per_file(cam_K, models)
+	# test ground truth pose using obj1, 0000.png
+	testobj = sinobj(1,0,[],[0.09630630, 0.99404401, 0.05100790, 0.57332098, -0.01350810, -0.81922001, -0.81365103, 0.10814000, -0.57120699])
+	testobj.pose[:3,3] = [-105.35775150, -117.52119142, 1014.87701320]
+	testobj.apply_pose(models['{:02d}'.format(int(1))].vertices)
+	testobj.project(cam_K)
 	embed()
+
+	# load_per_file(cam_K, models)
+	# embed()

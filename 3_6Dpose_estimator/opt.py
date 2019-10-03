@@ -16,8 +16,10 @@ parser.add_argument('--debug', default=False, type=bool,
                     help='Print the debug information')
 parser.add_argument('--snapshot', default=1, type=int,
                     help='How often to take a snapshot of the model (0 = never)')
-parser.add_argument('--obj_id', default=5, type=int,
+parser.add_argument('--obj_id', dest="object_id", default=5, type=int,
                     help='Object ID to test!')
+parser.add_argument('--img_id', dest="image_id", default=5, type=int,
+                    help='Image ID to test!')
 
 "----------------------------- AlphaPose options -----------------------------"
 parser.add_argument('--addDPG', default=False, type=bool,

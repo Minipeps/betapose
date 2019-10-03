@@ -7,10 +7,12 @@ from xml.etree import ElementTree
 
 NUM_SEQS = 15
 CLASS_NAMES = ('ape', 'bvise', 'bowl', 'camera', 'can', 'cat', 'cup', 'driller', 'duck', 'eggbo', 'glue', 'holepuncher', 'iron', 'lamp', 'phone')
-ROOT = '/media/data_2/COCO_SIXD/hinter'
+# ROOT = '/media/data_2/COCO_SIXD/hinter'
+ROOT = ''
 ANNO_DIR = opj(ROOT, 'Annotations')
 IMGS_DIR = opj(ROOT, 'JPEGImages')
-DKROOT = '/home/projects/detection/darknet/data_linemod'
+# DKROOT = '/home/projects/detection/darknet/data_linemod'
+DKROOT = 'D:/Documents/Programmation/darknet/build/darknet/x64/data_linemod'
 
 seqs = ['%02d' % (i+1) for i in range(NUM_SEQS)]
 pos_num, neg_num = [0] * NUM_SEQS, [0] * NUM_SEQS

@@ -6,7 +6,7 @@
 #include <pcl/console/time.h>
 #include <pcl/features/normal_3d.h>
 #include <pcl/io/ply_io.h>
-#include <pcl/io/ascii_io.h>
+//#include <pcl/io/ascii_io.h>
 #include <pcl/io/vtk_lib_io.h>
 #include <pcl/keypoints/sift_keypoint.h>
 #include <pcl/point_types.h>

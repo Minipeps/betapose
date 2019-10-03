@@ -5,8 +5,10 @@ from tqdm import tqdm
 from shutil import copyfile
 opj = os.path.join
 
-SIXD = '/home/data/sixd/hinterstoisser/test/02'
-DARKNET = '/home/projects/detection/darknet/data_linemod_gt/all'
+# SIXD = '/home/data/sixd/hinterstoisser/test/02'
+SIXD = 'D:/Documents/Programmation/betapose/LineMod/train/02'
+# DARKNET = '/home/projects/detection/darknet/data_linemod_gt/all'
+DARKNET = '../data_linemod_gt/all'
 LIST = '/home/projects/pose/yolopose/multi_obj_pose_estimation/cfg/train_occlusion.txt'
 GT_RATIO = 0.1
 WIDTH = 640
@@ -17,7 +19,7 @@ if __name__ == '__main__':
     DARKNET_IMGS = opj(DARKNET, 'images')
     SIXD_ANNO = opj(SIXD, 'gt.yml')
     with open(SIXD_ANNO) as f:
-        gt_info = yaml.load(f)
+        gt_info = yaml.full_load(f)
 
     IMG_PATHS = []
     if os.path.exists(DARKNET_IMGS) == False:

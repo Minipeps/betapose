@@ -47,7 +47,7 @@ class Benchmark:
 
 def load_yaml(path):
     with open(path, 'r') as f:
-        content = yaml.load(f)
+        content = yaml.full_load(f)
         return content
 
 def load_sixd_models(base_path, obj_id):
@@ -86,9 +86,9 @@ def load_sixd_models(base_path, obj_id):
 if __name__ == "__main__":
     # Loading camera, model, kp_model information of SIXD benchmark datasets
     print ("Betapose begin running now.")
-    obj_id = 2
+    obj_id = args.object_id
     print("Test seq", obj_id)
-    sixd_base = "/media/data_2/SIXD/hinterstoisser"
+    sixd_base = "../LineMod/"
     sixd_bench = load_sixd_models(sixd_base, obj_id)
     cam_K = sixd_bench.cam
     models = sixd_bench.models
@@ -151,7 +151,7 @@ if __name__ == "__main__":
             (inps, orig_img, im_name, boxes, scores, pt1, pt2) = det_processor.read()
 
             if boxes is None or boxes.nelement() == 0:
-                writer.save(None, None, None, None, None, orig_img, im_name.split('/')[-1])
+                writer.save(None, None, None, None, None, orig_img, im_name.split('\\')[-1])
                 continue
 
             ckpt_time, det_time = getTime(start_time)
@@ -173,7 +173,7 @@ if __name__ == "__main__":
             ckpt_time, pose_time = getTime(ckpt_time)
             runtime_profile['pt'].append(pose_time)
             hm = hm.cpu() # hm is torch.tensor
-            writer.save(boxes, scores, hm, pt1, pt2, orig_img, im_name.split('/')[-1])
+            writer.save(boxes, scores, hm, pt1, pt2, orig_img, im_name.split('\\')[-1])
             
             ckpt_time, post_time = getTime(ckpt_time)
             runtime_profile['pn'].append(post_time)
@@ -209,8 +209,8 @@ if __name__ == "__main__":
     adds = []
     proj_2d_errs = []
     ious = []
-    # for f in tqdm(final_result, ncols=80, ascii=True):
-    for idx, f in enumerate(final_result):
+    for f in tqdm(final_result, ncols=80, ascii=True):
+    # for idx, f in enumerate(final_result):
         imgname = f['imgname']
         imgname = int(imgname[0:-4]) # throw '.png'
         gt_frame = frames_of_ground_truth[imgname]

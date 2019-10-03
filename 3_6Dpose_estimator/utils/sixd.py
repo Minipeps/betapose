@@ -13,13 +13,13 @@ from model import Model3D
 ''' The following were copied over from the 6DB toolkit'''
 def load_yaml(path):
     with open(path, 'r') as f:
-        content = yaml.load(f)
+        content = yaml.full_load(f)
         return content
 
 
 def load_info(path):
     with open(path, 'r') as f:
-        info = yaml.load(f)
+        info = yaml.full_load(f)
         for eid in info.keys():
             if 'cam_K' in info[eid].keys():
                 info[eid]['cam_K'] = np.array(info[eid]['cam_K']).reshape((3, 3))
@@ -31,7 +31,7 @@ def load_info(path):
 
 def load_gt(path):
     with open(path, 'r') as f:
-        gts = yaml.load(f)
+        gts = yaml.full_load(f)
         for im_id, gts_im in gts.items():
             for gt in gts_im:
                 if 'cam_R_m2c' in gt.keys():

@@ -43,7 +43,7 @@ class Benchmark:
 
 def load_yaml(path):
     with open(path, 'r') as f:
-        content = yaml.load(f)
+        content = yaml.full_load(f)
         return content
 
 def load_bench(base_path):
@@ -390,7 +390,7 @@ if __name__ == '__main__':
 	tbar = tqdm(os.listdir(all_imgs), ascii=True, ncols=80)
 	for idx, img in enumerate(tbar):
 		img_path = opj(all_imgs, img)
-		img_idx = int(img_path.split('/')[-1].split('.')[0])  # 0001
+		img_idx = int(img_path.split('\\')[-1].split('.')[0])  # 0001
 		target_path = None
 		if idx in selected_ids:
 			count += 1
