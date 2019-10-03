@@ -47,7 +47,7 @@ class Benchmark:
 
 def load_yaml(path):
     with open(path, 'r') as f:
-        content = yaml.load(f)
+        content = yaml.full_load(f)
         return content
 
 def load_sixd_models(base_path, obj_id):
@@ -86,9 +86,9 @@ def load_sixd_models(base_path, obj_id):
 if __name__ == "__main__":
     # Loading camera, model, kp_model information of SIXD benchmark datasets
     print ("Betapose begin running now.")
-    obj_id = 2
+    obj_id = 1
     print("Test seq", obj_id)
-    sixd_base = "/media/data_2/SIXD/hinterstoisser"
+    sixd_base = "../LineMod/"
     sixd_bench = load_sixd_models(sixd_base, obj_id)
     cam_K = sixd_bench.cam
     models = sixd_bench.models

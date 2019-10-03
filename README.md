@@ -1,3 +1,5 @@
+This fork runs _partially_ on Ubuntu 18.04 with CUDA 10.1
+
 #	Betapose: Estimating 6D Pose From Localizing Designated Surface Keypoints
 Please refer to our paper for detailed explanation. Arxiv Link is [here](https://arxiv.org/abs/1812.01387).
 In the following, `ROOT` refers to the folder containing this README file.

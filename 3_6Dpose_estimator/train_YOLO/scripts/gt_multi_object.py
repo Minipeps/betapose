@@ -5,8 +5,8 @@ from tqdm import tqdm
 from shutil import copyfile
 opj = os.path.join
 
-SIXD = '/home/data/sixd/hinterstoisser/test/02'
-DARKNET = '/home/projects/detection/darknet/data_linemod_gt/all'
+SIXD = '../../LineMod/test/02'
+DARKNET = '../data_linemod_gt/all'
 LIST = '/home/projects/pose/yolopose/multi_obj_pose_estimation/cfg/train_occlusion.txt'
 GT_RATIO = 0.1
 WIDTH = 640

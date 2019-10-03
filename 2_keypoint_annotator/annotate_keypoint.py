@@ -29,7 +29,7 @@ TOTAL_KP_NUMBER = args.total_kp_number # the final number of kp in one model
 NUM_SELECTED = args.train_split # How many images to choose for training
 # Methods include random, sifts, cluster and corners
 # output base
-kp_dataset_base = args.output_base +'{:02d}'.format(int(OBJECT_CHOSEN))
+kp_dataset_base = os.path.join(args.output_base, '{:02d}'.format(int(OBJECT_CHOSEN)))
 sixd_base = args.sixd_base # for model loading
 
 ''' 
@@ -43,7 +43,7 @@ class Benchmark:
 
 def load_yaml(path):
     with open(path, 'r') as f:
-        content = yaml.load(f)
+        content = yaml.full_load(f)
         return content
 
 def load_bench(base_path):

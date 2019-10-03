@@ -29,10 +29,10 @@ if sys.version_info >= (3, 0):
 else:
     from Queue import Queue, LifoQueue
 
-# if opt.vis_fast:
-#     from fn import vis_frame_fast as vis_frame
-# else:
-#     from fn import vis_frame
+if opt.vis_fast:
+    from fn import vis_frame_fast as vis_frame
+else:
+    from fn import vis_frame
 from IPython import embed # for debugging
 
 # This class is deprecated, use the next one instead.
@@ -728,15 +728,15 @@ class DataWriter:
                     else:
                         result.update({'cam_R':[], 'cam_t':[]})
                     self.final_result.append(result)
-                    # if opt.save_img or opt.save_video or opt.vis:
-                    #     img = vis_frame(orig_img, result)
-                    #     if opt.vis:
-                    #         cv2.imshow("AlphaPose Demo", img)
-                    #         cv2.waitKey(30)
-                    #     if opt.save_img:
-                    #         cv2.imwrite(os.path.join(opt.outputpath, 'vis', im_name), img)
-                    #     if opt.save_video:
-                    #         self.stream.write(img)
+                    if opt.save_img or opt.save_video or opt.vis:
+                        img = vis_frame(orig_img, result)
+                        if opt.vis:
+                            cv2.imshow("AlphaPose Demo", img)
+                            cv2.waitKey(30)
+                        if opt.save_img:
+                            cv2.imwrite(os.path.join(opt.outputpath, 'vis', im_name), img)
+                        if opt.save_video:
+                            self.stream.write(img)
             else:
                 time.sleep(0.1)
 

@@ -10,7 +10,7 @@ LIBSO=0
 # set CUDNN_HALF=1 to further speedup 3 x times (Mixed-precision using Tensor Cores) on GPU Tesla V100, Titan V, DGX-2
 # set AVX=1 and OPENMP=1 to speedup on CPU (if error occurs then set AVX=0)
 
-DEBUG=1
+DEBUG=0
 
 ARCH= -gencode arch=compute_30,code=sm_30 \
       -gencode arch=compute_35,code=sm_35 \
